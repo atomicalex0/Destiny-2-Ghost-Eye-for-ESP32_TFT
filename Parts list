@@ -1,0 +1,14 @@
+Parts list for Destiny 2 Ghost Eye
+
+TFT display with integrated ESP32 - https://www.waveshare.com/esp32-s3-lcd-1.28.htm
+  No need for the toudh one unless you plan on poking your ghost in the eye a bunch.
+
+90° USB C cable - https://www.amazon.com/dp/B0FPLYB6QN 
+  I still had to grind off a bit of the plastic on the back of it to make it fit well. Avoid metal ones. 
+
+A 2 wire battery with a JST 1.25 connector on it. 
+  I used a 603450 1800mAh one. 
+
+A small latching switch so you can leave the battery plugged in and still turn it off. 
+
+Eight 6x2mm neodymium magnets
