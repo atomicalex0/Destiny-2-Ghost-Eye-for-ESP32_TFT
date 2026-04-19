@@ -15,3 +15,7 @@ The Waveshare board can be hot-glued into the front of the shell. It must be pla
 You should put magnets in the corner pockets to keep the two halves of the ghost shell together. 
 
 The Waveshare board includes a battery charger which can be driven by the onboard USB C port. The stand STL includes a groove to add a cable to the base. 
+
+To use the eye_bk_sm.h file, create a folder in your PlatformIO directory called Libraries_extra and then create a folder in that directory called eye_bk_sm.h. Put the library file in that folder with the same name. Then tell PlatformIO to look for the additional libraries. 
+
+Have fun, and eyes up, Guardian!
