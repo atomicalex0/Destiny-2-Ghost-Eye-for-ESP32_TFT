@@ -22,12 +22,12 @@ int texty = 4; // y position of the text 10 for waveshare, 4 for sunton
 
 void setup() {
   Serial.begin(115200); 
-  delay(1000);
+  delay(1000); //needed for debugging, can comment out for actual run
   Serial.println("Hello."); // "Hello." more debug friends
-  pinMode(TFT_BL, OUTPUT);
-  ledcSetup(TFT_BL, 5000, 8);
-  ledcAttachPin(TFT_BL, 3); //sunton 3, remember that waveshare might be different
-  ledcWrite(TFT_BL, 100);
+  pinMode(TFT_BL, OUTPUT); //comment out for waveshare
+  ledcSetup(TFT_BL, 5000, 8); //comment out for waveshare
+  ledcAttachPin(TFT_BL, 3); //comment out for waveshare
+  ledcWrite(TFT_BL, 100); //comment out for waveshare
   
   Serial.println("Hello world."); // "Hello world."  yeah, debug friends again
 
@@ -36,7 +36,7 @@ void setup() {
   Serial.println("GhostEye");
   
   tft.fillScreen(TFT_GREEN); // Clear the screen with green color
-  delay(1000);
+  delay(100);
   tft.fillScreen(TFT_BLACK); // Clear the screen with black color
   tft.setTextColor(TFT_WHITE, TFT_BLACK); // Set the text color to white with black background
   tft.setTextSize(2);
