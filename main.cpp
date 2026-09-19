@@ -4,9 +4,11 @@
 #include "eye_bk_sm.h"
 
 #define GC9A01_DRIVER
+// #define TFT_BACKLIGHT_ON HIGH // waveshare board
+// sunton board next three lines instead of backlight_on
 #define TFT_BL 3
 #define SPI_FREQUENCY 80000000
-#define SPI_READ_FREQUENCY 20000000
+#define SPI_READ_FREQUENCY 20000000 
 
 #define filesystem SPIFFS
 
