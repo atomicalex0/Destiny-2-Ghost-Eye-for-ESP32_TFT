@@ -1,6 +1,6 @@
 This project started out as a basic Ghost build and quickly became a little more.
 
-The code here will generate a moving ghost eye on a small Waveshare TFT display that you can use inside of a ghost shell to create a fairly realistic ghost for your desk.
+The code here will generate a moving ghost eye on a small Waveshare or Sunton ESP32 TFT display that you can use inside of a ghost shell to create a fairly realistic ghost for your desk. Sunton part# is ESP32-2424S012N (non-touch). 
 Everyone needs a ghost for their desk, you never know when you are going to need to be revived at work. 
 
 The model STLs are also included here, including a little stand. 
