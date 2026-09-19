@@ -1,21 +1,42 @@
-#include <Arduino.h>
-#include <TFT_eSPI.h>
-#include  "eye_bk_sm.h"
+#include "Arduino.h"
+#include "SPI.h"
+#include "tft_eSPI.h"
+#include "eye_bk_sm.h"
 
 #define GC9A01_DRIVER
-#define TFT_BACKLIGHT_ON HIGH
+#define TFT_BL 3
+#define SPI_FREQUENCY 80000000
+#define SPI_READ_FREQUENCY 20000000
 
 #define filesystem SPIFFS
 
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite spr = TFT_eSprite(&tft);
 
+int bobble = 1; //debug friend
+// locate the sprite in the middle of the screen considering the offset required by the edges 
+int eyex = 65; // x position of the ghost eye sprite 76 for waveshare, 65 for sunton
+int eyey = 78; // y position of the ghost eye sprite 83 for waveshare, 78 for sunton
+int textx = -4; // x position of the text 6 for waveshare, -4 for sunton
+int texty = 4; // y position of the text 10 for waveshare, 4 for sunton
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(115200); 
+  delay(1000);
+  Serial.println("Hello."); // "Hello." more debug friends
+  pinMode(TFT_BL, OUTPUT);
+  ledcSetup(TFT_BL, 5000, 8);
+  ledcAttachPin(TFT_BL, 3); //sunton 3, remember that waveshare might be different
+  ledcWrite(TFT_BL, 100);
+  
+  Serial.println("Hello world."); // "Hello world."  yeah, debug friends again
+
   tft.init();
   tft.setRotation(0);
-
+  Serial.println("GhostEye");
+  
+  tft.fillScreen(TFT_GREEN); // Clear the screen with green color
+  delay(1000);
   tft.fillScreen(TFT_BLACK); // Clear the screen with black color
   tft.setTextColor(TFT_WHITE, TFT_BLACK); // Set the text color to white with black background
   tft.setTextSize(2);
@@ -23,28 +44,29 @@ void setup() {
   
   // Draw a string at position (120, 120) on the screen
   tft.setTextDatum(MC_DATUM); // Set the datum to the middle center of the text
-  tft.drawString("GhostEye", 126, 100); //give myself some credit here
-  tft.drawString("by", 126, 130);
-  tft.drawString("atomicalex", 126, 160); 
+  tft.drawString("GhostEye", 120+textx, 90+texty); //give myself some credit here
+  tft.drawString("by", 122+textx, 120+texty);
+  tft.drawString("atomicalex", 126+textx, 150+texty); 
   delay(5000);
   
   tft.fillScreen(TFT_BLACK); // Clear the screen with black color
-  
   spr.createSprite(100,100); //create the ghost eye sprite
   spr.setSwapBytes(true);
   spr.pushImage(0,0,100,100,eye_bk_sm); //name the sprite
-  spr.pushSprite(76, 83); // locate the sprite and show it on the TFT
+  spr.pushSprite(eyex, eyey); // locate the sprite and show it on the TFT
   delay(2000);
 }
 
 void loop() {
-// locate the sprite in the middle of the screen considering the offset required by the edges 
+  delay(1000);
+  Serial.println(bobble);
+  bobble++;
+
 int i;
 int j;
-int eyex = 76;
-int eyey = 83;
 
 tft.fillScreen(TFT_BLACK); // wink the eye by clearing the screen and redrawing the sprite in the same location
+delay(250);
 Serial.println("Drawing image...");
 
   //Draw the image:
