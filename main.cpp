@@ -29,7 +29,7 @@ void setup() {
   pinMode(TFT_BL, OUTPUT); //comment out for waveshare
   ledcSetup(TFT_BL, 5000, 8); //comment out for waveshare
   ledcAttachPin(TFT_BL, 3); //comment out for waveshare
-  ledcWrite(TFT_BL, 100); //comment out for waveshare
+  ledcWrite(TFT_BL, 255); //comment out for waveshare, must be 255 to draw enough power to keep sunton chip awake
   
   Serial.println("Hello world."); // "Hello world."  yeah, debug friends again
 
